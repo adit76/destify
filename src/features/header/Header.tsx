@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Avatar from "@mui/material/Avatar";
@@ -19,10 +18,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { useTheme } from "@mui/material/styles";
 
-// type Anchor = 'top' | 'left' | 'bottom' | 'right';
-
 export function Header() {
   const [drawerStatus, setDrawerStatus] = React.useState(false);
+  // Menu Items
   const menuItems = [
     {
       heading: "Trip Mangement",
@@ -172,8 +170,6 @@ export function Header() {
           </List>
         </Box>
       </Drawer>
-      {/* <Link to="/counter">Counter</Link> |{" "}
-        <Link to="/rooms">Room</Link> */}
     </div>
   );
 }
