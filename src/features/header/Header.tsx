@@ -16,7 +16,8 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
-import { useTheme } from "@mui/material/styles";
+import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export function Header() {
   const [drawerStatus, setDrawerStatus] = React.useState(false);
@@ -98,6 +99,7 @@ export function Header() {
     };
 
   const theme = useTheme();
+  const mobileResponsive: boolean = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
     <div>
@@ -123,7 +125,7 @@ export function Header() {
       </Box>
       <Drawer open={drawerStatus} onClose={toggleDrawer(false)}>
         <Box
-          sx={{ width: "auto" }}
+          width={mobileResponsive ? "auto" : "100vw"}
           role="presentation"
           onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
