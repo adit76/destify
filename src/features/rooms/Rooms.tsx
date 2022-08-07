@@ -1,9 +1,11 @@
 import React from "react";
 import ScrollTabs from "./ScrollTabs";
 import RoomCard from "./RoomCard";
+import PastRooms from "./PastRooms";
 import { getRoomDetails, selectRoom } from "./roomSlice";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 
+import Container from "@mui/material/Container";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
@@ -36,7 +38,7 @@ export function Rooms() {
   }, []);
 
   return (
-    <div>
+    <Container sx={{ padding: 0, marginY: 2 }}>
       {/* Room Details Section */}
       {room.status === "success" ? (
         <div>
@@ -50,6 +52,8 @@ export function Rooms() {
             roomDetails={roomDetails?.roomInfo}
             activeRoom={activeTab}
           />
+
+          <PastRooms />
         </div>
       ) : (
         <Box
@@ -63,6 +67,6 @@ export function Rooms() {
           <CircularProgress />
         </Box>
       )}
-    </div>
+    </Container>
   );
 }
