@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 
 interface Props {
-  roomList: Array<{ roomId: string; name: string }>;
+  roomList: any;
   activeTab: number;
   handleTab: (event: React.SyntheticEvent, newValue: number) => void;
 }
@@ -22,8 +22,8 @@ const ScrollTabs: React.FC<Props> = ({ roomList, activeTab, handleTab }) => {
           allowScrollButtonsMobile
           aria-label="scrollable auto tabs example"
         >
-          {roomList.map((roomItem, index) => (
-            <Tab key={index} label={roomItem.name} />
+          {roomList.roomInfo?.map((room: any, index: number) => (
+            <Tab key={index} label={room.room[0].roomName} />
           ))}
         </Tabs>
       </Box>
