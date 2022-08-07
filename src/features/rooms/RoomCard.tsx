@@ -28,6 +28,7 @@ import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 
 interface Props {
   roomDetails: any;
+  activeRoom: number;
 }
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -46,7 +47,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }));
 
-const RoomCard: React.FC<Props> = ({ roomDetails }) => {
+const RoomCard: React.FC<Props> = ({ roomDetails, activeRoom }) => {
   // Card Section
   const [expanded, setExpanded] = React.useState(false);
 
@@ -56,8 +57,8 @@ const RoomCard: React.FC<Props> = ({ roomDetails }) => {
 
   return (
     <React.Fragment>
-      {roomDetails.roomInfo?.map((room: any, index: number) => (
-        <Card key={index}>
+      {roomDetails ? (
+        <Card>
           <CardContent sx={{ display: "flex", alignItems: "center" }}>
             <Avatar sx={{ bgcolor: blue[600] }} aria-label="recipe">
               <MeetingRoomIcon />
@@ -65,16 +66,18 @@ const RoomCard: React.FC<Props> = ({ roomDetails }) => {
 
             <Box ml={1}>
               <Typography variant="subtitle1" component="div">
-                {room.room[0].roomName}
+                {roomDetails[activeRoom].room[0].roomName}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {room.group[0].groupName}
+                {roomDetails[activeRoom].group[0].groupName}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {room.hotel[0].hotelName} - {room.room[0].roomType}
+                {roomDetails[activeRoom].hotel[0].hotelName} -{" "}
+                {roomDetails[activeRoom].room[0].roomType}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {room.room[0].travelStartDate} - {room.room[0].travelEndDate}
+                {roomDetails[activeRoom].room[0].travelStartDate} -{" "}
+                {roomDetails[activeRoom].room[0].travelEndDate}
               </Typography>
             </Box>
 
@@ -85,12 +88,12 @@ const RoomCard: React.FC<Props> = ({ roomDetails }) => {
           <CardMedia
             component="img"
             height="194"
-            image={room.hotel[0].hotelImage}
-            alt={room.hotel[0].hotelName}
+            image={roomDetails[activeRoom].hotel[0].hotelImage}
+            alt={roomDetails[activeRoom].hotel[0].hotelName}
           />
           <CardContent>
             <Stack direction="row" spacing={1} sx={{ mb: 1 }}>
-              {room.room[0].roomStatus === "Active" ? (
+              {roomDetails[activeRoom].room[0].roomStatus === "Active" ? (
                 <Chip
                   icon={<CheckIcon />}
                   label="Booked"
@@ -111,7 +114,7 @@ const RoomCard: React.FC<Props> = ({ roomDetails }) => {
               />
             </Stack>
             <Typography variant="body2" color="text.secondary">
-              {room.hotel[0].hotelDescription}
+              {roomDetails[activeRoom].hotel[0].hotelDescription}
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
@@ -201,7 +204,9 @@ const RoomCard: React.FC<Props> = ({ roomDetails }) => {
             </CardContent>
           </Collapse>
         </Card>
-      ))}
+      ) : (
+        "No Data"
+      )}
     </React.Fragment>
   );
 };
