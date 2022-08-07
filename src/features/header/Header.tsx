@@ -16,7 +16,7 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
-import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 export function Header() {
@@ -119,7 +119,16 @@ export function Header() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Room Dashboard
             </Typography>
-            <Avatar sx={{ width: 28, height: 28, fontSize: 14 }}>AN</Avatar>
+            <Avatar
+              sx={{
+                width: 28,
+                height: 28,
+                fontSize: 14,
+                bgcolor: theme.palette.secondary.light,
+              }}
+            >
+              AN
+            </Avatar>
           </Toolbar>
         </AppBar>
       </Box>
@@ -138,7 +147,9 @@ export function Header() {
             <List sx={{ color: "#fff" }}>
               <ListItem alignItems="flex-start">
                 <ListItemAvatar>
-                  <Avatar>AN</Avatar>
+                  <Avatar sx={{ bgcolor: theme.palette.primary.light }}>
+                    AN
+                  </Avatar>
                 </ListItemAvatar>
                 <ListItemText
                   primary="Account Name"
@@ -156,7 +167,7 @@ export function Header() {
                 {menuSection.menuItems.map((menuItem, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton>
-                      <ListItemIcon>
+                      <ListItemIcon sx={{ color: theme.palette.primary.main }}>
                         {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                       </ListItemIcon>
                       <ListItemText
