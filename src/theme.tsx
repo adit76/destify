@@ -1,7 +1,4 @@
-import React from "react";
 import { createTheme } from "@mui/material/styles";
-import { lightBlue } from "@mui/material/colors";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 const theme = createTheme({
   palette: {

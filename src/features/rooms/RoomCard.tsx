@@ -126,7 +126,7 @@ const RoomCard: React.FC<Props> = ({ roomDetails, activeRoom }) => {
             <IconButton
               aria-label="Modify"
               color="primary"
-              sx={{ fontSize: 16 }}
+              sx={{ fontSize: 14 }}
             >
               <EditLocationAltIcon />
               Modify
@@ -134,7 +134,7 @@ const RoomCard: React.FC<Props> = ({ roomDetails, activeRoom }) => {
             <IconButton
               aria-label="Make Payment"
               color="primary"
-              sx={{ fontSize: 16 }}
+              sx={{ fontSize: 14 }}
             >
               <AttachMoneyIcon />
               Make Payment

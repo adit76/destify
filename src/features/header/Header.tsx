@@ -139,11 +139,7 @@ export function Header() {
           onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
         >
-          <Box
-            py={2}
-            px={1}
-            sx={{ backgroundColor: theme.palette.primary.main }}
-          >
+          <Box p={1} sx={{ backgroundColor: theme.palette.primary.main }}>
             <List sx={{ color: "#fff" }}>
               <ListItem alignItems="flex-start">
                 <ListItemAvatar>
@@ -151,9 +147,16 @@ export function Header() {
                     AN
                   </Avatar>
                 </ListItemAvatar>
+
                 <ListItemText
-                  primary="Account Name"
-                  secondary="account@email.com"
+                  primary={
+                    <Typography variant="subtitle1" component="div">
+                      Account Name
+                    </Typography>
+                  }
+                  secondary={
+                    <Typography variant="body2">account@email.com</Typography>
+                  }
                 />
               </ListItem>
             </List>
