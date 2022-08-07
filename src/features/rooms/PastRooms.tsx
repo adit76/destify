@@ -5,14 +5,19 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { blue } from "@mui/material/colors";
+import { useTheme } from "@mui/material/styles";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 
 const RoomCard = () => {
+  const theme = useTheme();
+
   return (
     <Card sx={{ marginY: 2 }}>
       <CardContent sx={{ display: "flex", alignItems: "center" }}>
-        <Avatar sx={{ bgcolor: blue[600] }} aria-label="recipe">
+        <Avatar
+          sx={{ bgcolor: theme.palette.secondary.main }}
+          aria-label="recipe"
+        >
           <MeetingRoomIcon />
         </Avatar>
 

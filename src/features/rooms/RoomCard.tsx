@@ -9,7 +9,7 @@ import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { blue } from "@mui/material/colors";
+import { useTheme } from "@mui/material/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Chip from "@mui/material/Chip";
@@ -55,12 +55,17 @@ const RoomCard: React.FC<Props> = ({ roomDetails, activeRoom }) => {
     setExpanded(!expanded);
   };
 
+  const theme = useTheme();
+
   return (
     <React.Fragment>
       {roomDetails ? (
         <Card>
           <CardContent sx={{ display: "flex", alignItems: "center" }}>
-            <Avatar sx={{ bgcolor: blue[600] }} aria-label="recipe">
+            <Avatar
+              sx={{ bgcolor: theme.palette.secondary.main }}
+              aria-label="recipe"
+            >
               <MeetingRoomIcon />
             </Avatar>
 
@@ -95,22 +100,22 @@ const RoomCard: React.FC<Props> = ({ roomDetails, activeRoom }) => {
             <Stack direction="row" spacing={1} sx={{ mb: 1 }}>
               {roomDetails[activeRoom].room[0].roomStatus === "Active" ? (
                 <Chip
-                  icon={<CheckIcon />}
                   label="Booked"
-                  color="primary"
                   variant="outlined"
                   size="small"
+                  color="primary"
+                  icon={<CheckIcon />}
                 />
               ) : (
                 ""
               )}
 
               <Chip
-                icon={<AttachMoneyIcon />}
                 label="Balance Due - $1,234"
-                color="success"
+                color="warning"
                 variant="outlined"
                 size="small"
+                icon={<AttachMoneyIcon />}
               />
             </Stack>
             <Typography variant="body2" color="text.secondary">
@@ -118,11 +123,19 @@ const RoomCard: React.FC<Props> = ({ roomDetails, activeRoom }) => {
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton aria-label="Modify" size="small" color="success">
+            <IconButton
+              aria-label="Modify"
+              color="primary"
+              sx={{ fontSize: 14 }}
+            >
               <EditLocationAltIcon />
               Modify
             </IconButton>
-            <IconButton aria-label="Make Payment" size="small" color="success">
+            <IconButton
+              aria-label="Make Payment"
+              color="primary"
+              sx={{ fontSize: 14 }}
+            >
               <AttachMoneyIcon />
               Make Payment
             </IconButton>
@@ -147,21 +160,21 @@ const RoomCard: React.FC<Props> = ({ roomDetails, activeRoom }) => {
                   <Chip
                     icon={<PersonIcon />}
                     label="Adult 1"
-                    color="success"
+                    color="primary"
                     variant="outlined"
                     size="small"
                   />
                   <Chip
                     icon={<PersonIcon />}
                     label="Adult 2"
-                    color="success"
+                    color="primary"
                     variant="outlined"
                     size="small"
                   />
                   <Chip
                     icon={<ChildCareIcon />}
                     label="Child 1"
-                    color="success"
+                    color="warning"
                     variant="outlined"
                     size="small"
                   />
@@ -179,7 +192,7 @@ const RoomCard: React.FC<Props> = ({ roomDetails, activeRoom }) => {
                   <Chip
                     icon={<DepartureBoardIcon />}
                     label="Transfer Purchased"
-                    color="success"
+                    color="info"
                     variant="outlined"
                     size="small"
                   />
